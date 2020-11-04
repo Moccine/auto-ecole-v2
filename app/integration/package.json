@@ -1,0 +1,25 @@
+{
+  "name": "Front-End-Pack",
+  "version": "1.0.0",
+  "description": "Front-End pack",
+  "author": "Kernix",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn install && yarn run encore production",
+    "start:dev": "yarn install && yarn run encore dev",
+    "watch": "yarn run encore dev --watch",
+    "iconfont": "gulp iconfont"
+  },
+  "dependencies": {
+    "@symfony/webpack-encore": "symfony/webpack-encore",
+    "autoprefixer": "^10.0.1",
+    "bootstrap": "^4.5.3",
+    "copy-webpack-plugin": "^6.3.0",
+    "gulp": "^4.0.2",
+    "node-sass": "^5.0.0",
+    "postcss": "^8.1.4",
+    "postcss-loader": "^4.0.4",
+    "sass-loader": "^10.0.5",
+    "webpack-notifier": "^1.8.0"
+  }
+}
