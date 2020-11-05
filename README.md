@@ -1,1 +1,0 @@
-# auto-ecole-v2
