@@ -1,10 +1,10 @@
 # Muzeo
 
-The project is a Symfony 4.3 based application which is developped in a docker environment.
+The project is a Symfony 5.2 based application which is developped in a docker environment.
 
 ## Why ?
 ---
-Muzéo : Aide à la création des devis
+Auto ecole : Aide à la reservation des cours de conduite
 
 ## Requirements
 ---
@@ -119,7 +119,4 @@ docker cp muzeo_apache_1:/var/www/symfony/vendor   app/symfony/
 ## Authors / Maintainers
 ---
 
-- Sofiane Souidi
-- Fabrice Metayer
-- Géraldine Bonnel
-- Eric Defiez
+- Mouctar Sow
