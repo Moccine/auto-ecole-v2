@@ -1,0 +1,116 @@
+@font-face {
+  font-family: "muzeo";
+  src: url('../../fonts/icons/muzeo.eot');
+  src: url('../../fonts/icons/muzeo.eot?#iefix') format('eot'),
+    url('../../fonts/icons/muzeo.woff2') format('woff2'),
+    url('../../fonts/icons/muzeo.woff') format('woff'),
+    url('../../fonts/icons/muzeo.ttf') format('truetype'),
+    url('../../fonts/icons/muzeo.svg#muzeo') format('svg');
+}
+
+@mixin icon-styles {
+  font-family: "muzeo";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+  text-decoration: none;
+  text-transform: none;
+}
+
+%icon {
+  @include icon-styles;
+}
+
+@function icon-char($filename) {
+  $char: "";
+
+  @if $filename == change {
+    $char: "\E001";
+  }
+  @if $filename == copy {
+    $char: "\E002";
+  }
+  @if $filename == edit {
+    $char: "\E003";
+  }
+  @if $filename == img {
+    $char: "\E004";
+  }
+  @if $filename == kernix {
+    $char: "\E005";
+  }
+  @if $filename == less {
+    $char: "\E006";
+  }
+  @if $filename == more {
+    $char: "\E007";
+  }
+  @if $filename == revision {
+    $char: "\E008";
+  }
+  @if $filename == see {
+    $char: "\E009";
+  }
+  @if $filename == sorted {
+    $char: "\E00A";
+  }
+  @if $filename == test {
+    $char: "\E00B";
+  }
+  @if $filename == trash {
+    $char: "\E00C";
+  }
+
+  @return $char;
+}
+
+@mixin icon($filename, $insert: before, $extend: true) {
+  &:#{$insert} {
+    @if $extend {
+      @extend %icon;
+    } @else {
+      @include icon-styles;
+    }
+    content: icon-char($filename);
+  }
+}
+
+.icon-change {
+  @include icon(change);
+}
+.icon-copy {
+  @include icon(copy);
+}
+.icon-edit {
+  @include icon(edit);
+}
+.icon-img {
+  @include icon(img);
+}
+.icon-kernix {
+  @include icon(kernix);
+}
+.icon-less {
+  @include icon(less);
+}
+.icon-more {
+  @include icon(more);
+}
+.icon-revision {
+  @include icon(revision);
+}
+.icon-see {
+  @include icon(see);
+}
+.icon-sorted {
+  @include icon(sorted);
+}
+.icon-test {
+  @include icon(test);
+}
+.icon-trash {
+  @include icon(trash);
+}

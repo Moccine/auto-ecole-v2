@@ -1,0 +1,40 @@
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap";
+
+// Bootstrap Select
+//@import "node_modules/bootstrap-select/sass/bootstrap-select.scss";
+
+// Select2
+//@import "node_modules/select2/src/scss/core.scss";
+
+// Mixins
+@import "mixins/bg-cover";
+@import "mixins/circle";
+@import "mixins/flex";
+@import "mixins/fonts-typo";
+@import "mixins/fonts-vendor";
+@import "mixins/breakpoints";
+@import "mixins/rem";
+
+// Components
+@import "components/fonts";
+@import "components/iconfont";
+@import "components/commons";
+@import "components/buttons";
+@import "components/forms";
+@import "components/lists";
+@import "components/structure";
+
+// Layouts
+//@import "layouts/header";
+
+// Pages
+//@import "pages/authentification";
+//@import "pages/home";
+//@import "pages/account";
+//@import "pages/quotation-list";
+//@import "pages/quotation-steps";
+//@import "pages/error";

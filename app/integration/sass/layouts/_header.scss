@@ -1,0 +1,79 @@
+/* ---- Header ---- */
+.header-wrap {
+  @extend .clearfix; min-width: 54px; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.03);
+  padding: rem(5px) 0; background: $white;
+  @include max(xs){ text-align: center;}
+
+  // Logo
+  .header-logo {
+    float: left; max-width: 150px; width: 100%; display: block; margin-top: rem(8px);
+    @include max(xs){ float: none; margin-top: 0; display: inline-block;}
+  }
+
+  // Nav Block
+  .nav-block {
+    float: right;
+    @include max(xs){ float: none; padding-top: rem(10px);}
+
+    .btn {
+      min-height: 44px; padding: rem(9px) rem(23px) rem(4px); color: $primary; font-size: rem(18px);
+      &.btn-link {
+        padding-top: rem(12px);
+        @include max(xs){ display: none;}
+      }
+      &.btn-account {
+        padding: 0; margin: 0 rem(25px);
+        @include max(xs){ margin: 0 rem(10px);}
+        &:after {
+          vertical-align: 0; transition: 0.3s;
+        }
+        span {
+          width: 35px; height: 35px; border-radius: 50%; border: 1px solid $primary; line-height: 35px; display: inline-block; font-size: rem(15px); font-weight: 900; text-transform: uppercase;
+        }
+      }
+    }
+
+    // Account
+    .dropdown-account {
+      display: inline-block;
+
+      &.show {
+        .btn-account {
+          &:after { transform: rotate(-180deg);}
+        }
+      }
+
+      .dropdown-menu {
+        right: 40px; left: auto !important; border-radius: 5px; box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15); border: 0; margin-top: rem(10px); min-width: auto; padding: rem(5px) 0;
+        @include max(xs){ right: 20px;}
+        .dropdown-item {
+          font-size: rem(14px); position: relative; padding: rem(10px) rem(20px);
+
+          + .dropdown-item {
+            &:before {
+              content: ''; display: block; position: absolute; left: 20px; right: 20px; top:0; height: 1px; background: rgba($primary, 0.1);
+            }
+          }
+
+          &:hover, &:focus { color: $secondary; background: transparent;}
+        }
+      }
+    }
+
+    // Language
+    .language-list {
+      display: inline-block; margin-bottom: 0; margin-top: rem(3px); vertical-align: middle;
+      li {
+        &.list-item-active {
+          pointer-events: none;
+          a { font-weight: 600; color: $secondary; }
+        }
+        a {
+          font-size: rem(14px);
+          color: rgba($primary, 0.5);
+          &:hover, &:focus { color: $secondary; text-decoration: none;}
+        }
+      }
+    }
+  }
+}

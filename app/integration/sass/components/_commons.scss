@@ -1,0 +1,5 @@
+/*--- Commons --- */
+.default-block {
+  border-radius: 5px; box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.03); padding: rem(30px); background: $white;
+  @include max(xs){ padding: rem(20px) rem(15px);}
+}

@@ -1,0 +1,16 @@
+# Basic
+*~
+\#*\#
+*.swp
+*.log
+.DS_Store
+.trash/
+.idea/
+
+# Docker
+/docker-compose.override.yml
+/data/mysql
+/.env
+
+# NodeJS
+node_modules

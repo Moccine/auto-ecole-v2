@@ -1,0 +1,56 @@
+/* ---- Button ---- */
+.btn {
+  // background-color: $grey;
+  border: 0;
+  border-radius: 5px;
+  font-size: rem(18px);
+  min-height: $btn-height;
+  text-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  white-space: normal;
+  padding: rem(10px) rem(12px);
+  background-image: none;
+  white-space: normal;
+  box-shadow: initial;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+  &:focus , &:active , &:active:focus { outline: none; box-shadow: none; }
+  &.btn-full { width:100%; }
+  &.btn-icon {
+    position: relative; padding-left: rem(45px);
+    &:before {
+      @include zmdi; content: "\f1f1"; font-size: rem(18px); display: inline-block; position: absolute; top: 50%; left: 15px; transform: translateY(-50%);
+    }
+  }
+  &.btn-primary {
+    border: 2px solid $primary; color: $white !important;
+    &:focus, &:hover, &:active:focus { background-color: transparent; color: $primary !important; }
+  }
+  &.btn-primary-outline {
+    border: 2px solid $primary; background: transparent; color: $primary;
+    &:focus, &:hover, &:active:focus { background-color: $black; color: $white; }
+  }
+  &.btn-secondary  {
+    // color: $white; background-color: $secondary;
+    &:focus, &:hover, &:active:focus { background-color: transparentize($secondary, 0.2); border-color: transparentize($secondary, 0.2)}
+  }
+  &.btn-tertiary {
+    color: $white; background-color: $tertiary;
+    &:focus, &:hover, &:active:focus { background-color: transparentize($tertiary, 0.2); border-color: transparentize($tertiary, 0.2);}
+  }
+  &.btn-link {
+    color: $secondary; padding: 0; min-height: auto; font-size: rem(16px);
+  }
+  &.btn-duplicate, &.btn-revision {
+    color: $text-color; vertical-align: middle; margin-top: rem(-6px); text-decoration: none;
+    &:focus, &:hover, &:active:focus { color: $secondary; }
+  }
+  &[disabled] {
+    pointer-events: none; opacity: 0.5;
+  }
+}

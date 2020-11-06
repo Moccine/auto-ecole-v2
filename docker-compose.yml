@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  # Apache
+  apache:
+    build: ./docker/build/apache
+    depends_on:
+      - mysql
+    volumes:
+      - ./docker/etc/apache/virtualhost.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+      - ./docker/etc/php/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./docker/etc/php/php-cli.ini:/usr/local/etc/php/php-cli.ini:ro
+      - ./app/symfony:/var/www/symfony:cached
+      - /var/www/symfony/var/cache/
+      - app-vendor:/var/www/symfony/vendor:delegated
+  # MySQL
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./docker/etc/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - mysql-data:/var/lib/mysql/:delegated
+    environment:
+      MYSQL_DATABASE: auto_ecole_v2
+      MYSQL_ROOT_PASSWORD: azerty
+      MYSQL_USER: auto_ecole
+      MYSQL_PASSWORD: auto_ecole
+
+  # phpMyAdmin
+  phpmyadmin:
+    image: nazarpc/phpmyadmin
+    depends_on:
+      - mysql
+
+  # Mailhog
+  mailhog:
+    image: mailhog/mailhog:latest
+
+volumes:
+  app-vendor:
+  mysql-data:

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{{ 'app.name'|trans }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="{{ 'app.description'|trans }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Styles -->
+  {#  <link rel="stylesheet" href="{{ asset('build/vendors/material-design-iconic-font/dist/css/material-design-iconic-font.min.css') }}">#}
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Fonts -->
+    <link href="fonts/lato/lato.css" rel="stylesheet">
+    <!-- CSS -->
+    <!-- Bootstrap CSS
+    ============================================ -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Icon Font CSS
+    ============================================ -->
+    <link rel="stylesheet" href="css/icofont.css">
+    <!-- Plugins CSS
+    ============================================ -->
+    <link rel="stylesheet" href="css/plugins.css">
+    <!-- ShortCodes CSS
+    ============================================ -->
+    <link rel="stylesheet" href="css/shortcode/shortcodes.css">
+    <!-- Style CSS
+    ============================================ -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Responsive CSS
+    ============================================ -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Modernizer JS
+    ============================================ -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    {{ encore_entry_link_tags('main.min') }}
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
