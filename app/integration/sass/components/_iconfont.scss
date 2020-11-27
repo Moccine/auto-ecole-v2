@@ -1,15 +1,14 @@
 @font-face {
   font-family: "muzeo";
-  src: url('../../fonts/icons/muzeo.eot');
+/*  src: url('../../fonts/icons/muzeo.eot');
   src: url('../../fonts/icons/muzeo.eot?#iefix') format('eot'),
     url('../../fonts/icons/muzeo.woff2') format('woff2'),
     url('../../fonts/icons/muzeo.woff') format('woff'),
     url('../../fonts/icons/muzeo.ttf') format('truetype'),
-    url('../../fonts/icons/muzeo.svg#muzeo') format('svg');
+    url('../../fonts/icons/muzeo.svg#muzeo') format('svg');*/
 }
 
 @mixin icon-styles {
-  font-family: "muzeo";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   font-style: normal;

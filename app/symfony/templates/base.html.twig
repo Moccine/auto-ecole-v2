@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale }}" class="no-js">
+<!--<html lang="{{ app.request.locale }}" class="no-js"> -->
+<html class="no-js" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block title %}{{ 'app.name'|trans }}{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="description" content="{{ 'app.description'|trans }}">
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Home || Driveon</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Styles -->
-  {#  <link rel="stylesheet" href="{{ asset('build/vendors/material-design-iconic-font/dist/css/material-design-iconic-font.min.css') }}">#}
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <!-- Fonts -->
@@ -20,32 +16,56 @@
     <!-- CSS -->
     <!-- Bootstrap CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Icon Font CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/icofont.css">
+    <link rel="stylesheet" href="{{ asset('css/icofont.css') }}">
     <!-- Plugins CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="{{ asset('css/plugins.css') }}">
     <!-- ShortCodes CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="{{ asset('css/shortcode/shortcodes.css') }}">
     <!-- Style CSS
     ============================================ -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
     <!-- Responsive CSS
     ============================================ -->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <!-- Modernizer JS
     ============================================ -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    {{ encore_entry_link_tags('main.min') }}
+    <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+{#    {{ encore_entry_link_tags('base') }}#}
+
     {% block stylesheets %}{% endblock %}
 </head>
-<body>
-
+{#{{ encore_entry_script_tags('plugins') }}
+{{ encore_entry_script_tags('front') }}#}
 <body>
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
+<!-- Body main wrapper end -->
+
+<!-- JS -->
+
+<!-- jQuery JS
+============================================ -->
+<script src="{{ asset('js/vendor/jquery-1.12.0.min.js') }}"></script>
+<!-- Bootstrap JS
+============================================ -->
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<!-- Plugins JS
+============================================ -->
+<script src="{{ asset('js/plugins.js') }}"></script>
+<!-- Ajax Mail JS
+============================================ -->
+<script src="{{ asset('js/ajax-mail.js') }}"></script>
+<!-- WOW JS
+============================================ -->
+<script src="{{ asset('js/wow.min.js') }}"></script>
+<!-- Main JS
+============================================ -->
+<script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

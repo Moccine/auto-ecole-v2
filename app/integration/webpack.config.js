@@ -12,18 +12,22 @@ Encore
 
     // will create public/build/app.js and public/build/app.css
     .addEntry('front', './js/front/main.js')
+    //.addEntry('plugins', './driveon-light/js/plugins.js')
+   // .addEntry('modernizr', './driveon-light/js/vendor/modernizr-2.8.3.min.js')
 
     // will output as web/build/theme.min.css
-    .addStyleEntry('main.min', './sass/main.scss')
+ //   .addStyleEntry('main.min', './sass/main.scss')
+
+    //.addStyleEntry('base', './css/main.css')
 
     // allow less files to be processed
     .enableSassLoader()
 
     // post css
     .enablePostCssLoader((options) => {
-      options.config = {
-        path: ' postcss.config.js'
-      };
+        options.config = {
+            path: ' postcss.config.js'
+        };
     })
 
     // will require an extra script tag for runtime.js
@@ -44,18 +48,19 @@ Encore
     .enableBuildNotifications()
 
     // Copy vendor
-    .addPlugin(
-      new CopyWebpackPlugin({
-        patterns: [
-          // Material Design
-          { context: 'node_modules', from: 'material-design-iconic-font/dist/css/*.*', to: appWeb+'/vendors/' },
-          { context: 'node_modules', from: 'material-design-iconic-font/dist/fonts/*.*', to: appWeb+'/vendors/' },
+   /* .addPlugin(
+        new CopyWebpackPlugin({
+            patterns: [
+                // Material Design
+                //{from: 'driveon-light/*', to: appWeb + '/vendors/'},
+                // { context: 'node_modules', from: 'material-design-iconic-font/dist/css/*.*', to: appWeb+'/vendors/' },
+                 //{ context: './driveon-light/js/vendor/js/', from: './*.js', to: appWeb+'/vendors/' },
 
-          // Datepicker
-          { context: 'node_modules', from: 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css', to: appWeb+'/vendors/bootstrap-datepicker/dist/css/' },
-        ]
-      })
-    )
+                // Datepicker
+                //   { context: 'node_modules', from: 'bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css', to: appWeb+'/vendors/bootstrap-datepicker/dist/css/' },
+            ]
+        })
+    )*/
 ;
 
 // export the final configuration
