@@ -61,17 +61,20 @@ class UserManager
 
     public function create(User $user): void
     {
-        $this->encodePassword($user, $user->getPlainPassword());
+        try{
+            $this->encodePassword($user, $user->getPlainPassword());
+            $this->em->persist($user);
+            $this->em->flush();
+            $this->tokenManager->create(Token::TYPE_CONFIRM, $user);
 
-        $this->em->persist($user);
-        $this->em->flush();
+            $this->eventDispatcher->dispatch(
+                new UserEvent($user),
+                UserEvent::REGISTERED
+            );
+        }catch (\Exception $exception){
+            dd($exception);
+        }
 
-        $this->tokenManager->create(Token::TYPE_CONFIRM, $user);
-
-        $this->eventDispatcher->dispatch(
-            new UserEvent($user),
-            UserEvent::REGISTERED
-        );
     }
 
     private function encodePassword(User $user, string $password): void

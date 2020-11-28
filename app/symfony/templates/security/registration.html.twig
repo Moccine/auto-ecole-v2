@@ -49,7 +49,8 @@
           <div class="contact-form form text-left col-lg-8 col-sm-7 col-12">
             {{ form_start(form, {'attr':{'id': 'contact-form'}}) }}
             <div class="input 2">
-              {{ form_row(form.client.type) }}
+              {{ form_errors(form.client.type) }}
+              {{ form_widget(form.client.type) }}
             </div>
 
             <div class="input 2">
@@ -57,7 +58,10 @@
             </div>
             <div class="input 2">
               {{ form_row(form.email) }}
-              {{ form_row(form.plainPassword) }}
+            </div>
+            <div class="input 2">
+              {{ form_errors(form.plainPassword) }}
+              {{ form_widget(form.plainPassword) }}
             </div>
             <div class="input 2">
               {{ form_row(form.client.lastName) }}

@@ -10,8 +10,10 @@ services:
   phpmyadmin:
     ports:
       - 8001:80
-
   mailhog:
     ports:
       - 1025:1025
       - 8025:8025
+  mysql:
+    ports:
+      - "3306:3306"
