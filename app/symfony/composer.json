@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": "^7.3.0",
+        "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/annotations": "^1.10.2",
@@ -14,6 +14,7 @@
         "symfony/form": "5.1.*",
         "symfony/framework-bundle": "5.1.*",
         "symfony/http-client": "5.1.*",
+        "symfony/mailer": "5.1.*",
         "symfony/monolog-bundle": "^3.5",
         "symfony/orm-pack": "^1.0.8",
         "symfony/security-bundle": "5.0.*",
@@ -69,7 +70,7 @@
     },
     "extra": {
         "symfony": {
-          "require": "5.2.*",
+          "require": "5.1.*",
           "allow-contrib": false
         }
     }

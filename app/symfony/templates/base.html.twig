@@ -43,6 +43,7 @@
 {#{{ encore_entry_script_tags('plugins') }}
 {{ encore_entry_script_tags('front') }}#}
 <body>
+{% include 'common/pre_loader.html.twig' %}<!-- Pre Loader -->
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
 <!-- Body main wrapper end -->
