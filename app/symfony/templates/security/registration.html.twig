@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  Inscription
+
+  {{ form_start(form) }}
+
+    {{ form_row(form.client.type) }}
+
+    {{ form_label(form.email) }}
+    {{ form_row(form.email) }}
+
+    {{ form_label(form.plainPassword) }}
+    {{ form_row(form.plainPassword) }}
+
+    {{ form_label(form.client.lastName) }}
+    {{ form_row(form.client.lastName) }}
+
+    {{ form_label(form.client.firstName) }}
+    {{ form_row(form.client.firstName) }}
+
+    {{ form_label(form.client.phone) }}
+    {{ form_row(form.client.phone) }}
+
+    {{ form_label(form.client.company) }}
+    {{ form_row(form.client.company) }}
+
+    {{ form_label(form.client.address.address) }}
+    {{ form_row(form.client.address.address) }}
+
+    {{ form_label(form.client.address.postalCode) }}
+    {{ form_row(form.client.address.postalCode) }}
+
+    {{ form_label(form.client.address.city) }}
+    {{ form_row(form.client.address.city) }}
+
+    {{ form_label(form.client.address.country) }}
+    {{ form_row(form.client.address.country) }}
+
+    {{ form_label(form.client.siret) }}
+    {{ form_row(form.client.siret) }}
+
+  {{ form_end(form) }}
+
+{% endblock %}

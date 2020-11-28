@@ -1,0 +1,12 @@
+validator:
+    user:
+      username: 'Votre identifiant ne respecte pas le format e-mail'
+      password: 'Le mot de passe doit contenir 8 caractères ou plus dont une majuscule, une minuscule et un chiffre'
+    siret:
+      required: 'Siret est requis'
+    company:
+      required: 'Raison sociale est requis'
+    postalCode:
+      length: 'Le code postal en France doit comporter 5 caractères'
+    error:
+      password: 'Mauvaise valeur pour votre mot de passe actuel'
