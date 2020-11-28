@@ -24,20 +24,32 @@ class AddressType extends AbstractType
     {
         $builder
             ->add('address', TextType::class, [
-                'label' => 'app.form.registration.address',
+                'label' => false,
                 'required' => true,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.address'
+                ]
             ])
             ->add('postalCode', TextType::class, [
-                'label' => 'app.form.registration.postalCode',
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.postalCode'
+                ]
             ])
             ->add('city', TextType::class, [
-                'label' => 'app.form.registration.city',
+                'label' => false,
                 'required' => true,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.city'
+                ]
             ])
             ->add('country', ChoiceType::class, [
-                'label' => 'app.form.registration.country',
+                'label' => false,
                 'choices' => array_flip(Address::$countries),
                 'required' => true,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.country'
+                ]
             ])
         ;
     }

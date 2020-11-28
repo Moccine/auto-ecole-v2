@@ -49,6 +49,13 @@
           <div class="contact-form form text-left col-lg-8 col-sm-7 col-12">
             {{ form_start(form, {'attr':{'id': 'contact-form'}}) }}
             <div class="input 2">
+              {{ form_row(form.client.type) }}
+            </div>
+
+            <div class="input 2">
+              {{ form_row(form.client.address.country) }}
+            </div>
+            <div class="input 2">
               {{ form_row(form.email) }}
               {{ form_row(form.plainPassword) }}
             </div>
@@ -76,15 +83,9 @@
             </div>
 
             <div class="input 2">
-              {{ form_row(form.client.address.country) }}
-            </div>
-
-            <div class="input 2">
               {{ form_row(form.client.siret) }}
             </div>
-            <div class="input 2">
-              {{ form_row(form.client.type) }}
-            </div>
+
             <div class="input input-submit">
               {{ form_row(form.submit) }}
             </div>

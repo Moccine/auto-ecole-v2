@@ -26,24 +26,31 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'app.form.registration.userName',
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.userName'
+                ]
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'label' => 'app.form.registration.plainPassword',
                 'type' => PasswordType::class,
                 'invalid_message' => 'app.form.registration.passwordNotIdentical',
                 'first_options' => [
-                    'label' => 'app.form.registration.plainPassword',
-                ],
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'app.form.registration.plainPassword'
+                    ]],
                 'second_options' => [
-                    'label' => 'app.form.registration.secondPassword',
+                    'label' => false,
+                    'attr' => [
+                        'placeholder' => 'app.form.registration.secondPassword'
+                    ]
                 ],
             ])
             ->add('client', ClientType::class)
             ->add('submit', SubmitType::class, [
                 'label' => 'app.form.registration.submit',
-            ])
-        ;
+            ]);
     }
 
     public function getBlockPrefix(): ?string

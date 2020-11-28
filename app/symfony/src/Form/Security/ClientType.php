@@ -25,25 +25,39 @@ class ClientType extends AbstractType
     {
         $builder
             ->add('lastName', null, [
-                'label' => 'app.form.registration.lastName',
+                'label' => false,
                 'required' => true,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.lastName'
+                ]
             ])
             ->add('firstName', null, [
-                'label' => 'app.form.registration.firstName',
+                'label' =>  false,
                 'required' => true,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.firstName'
+                ]
             ])
             ->add('phone', null, [
-                'label' => 'app.form.registration.phone',
+                'label' => false,
                 'required' => true,
                 'attr' => [
                     'type' => 'number',
+                    'placeholder' => 'app.form.registration.phone'
+
                 ],
             ])
             ->add('company', null, [
-                'label' => 'app.form.registration.company',
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.company'
+                ]
             ])
             ->add('siret', null, [
-                'label' => 'app.form.registration.siret',
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'app.form.registration.siret'
+                ]
             ])
             ->add('type', ChoiceType::class, [
                 'label' => false,
