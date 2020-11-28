@@ -1,0 +1,26 @@
+<!-- Page Banner Area
+{% if heading is not defined %}
+    {% set  heading = 'title'%}
+{% endif %}
+{% if currentPage is not defined %}
+    {% set  currentPage = 'Current Page'%}
+{% endif %}
+{% if previousPages is not defined %}
+    {% set  previousPages = {}%}
+{% endif %}
+============================================ -->
+<div class="page-banner-area overlay overlay-black overlay-70">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner text-center col-12">
+                <h1>{{ heading }}</h1>
+                <ul>
+                    {% for previousPage in previousPages %}
+                    <li><a href="{{ previousPage.link }}">{{ previousPage.name }}</a></li>
+                    {% endfor %}
+                    <li><span>{{ currentPage }}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

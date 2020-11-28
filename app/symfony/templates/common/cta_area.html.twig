@@ -1,0 +1,22 @@
+
+{% if heading is not defined %}
+    {% set  heading = 'title'%}
+{% endif %}
+{% if linkHeading is not defined %}
+    {% set  linkHeading = 'Lien cta'%}
+{% endif %}
+{% if ctaLink is not defined %}
+    {% set  ctaLink = '#'%}
+{% endif %}
+<!-- CTA Area
+============================================ -->
+<div class="cta-area pb-40 pt-40">
+    <div class="container">
+        <div class="row">
+            <div class="call-to-action text-left col-lg-10 col-12 mx-auto">
+                <h3>{{ heading }}</h3>
+                <a href="{{ ctaLink }}" class="btn transparent ">{{ linkHeading }}</a>
+            </div>
+        </div>
+    </div>
+</div>

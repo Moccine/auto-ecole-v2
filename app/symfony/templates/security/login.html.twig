@@ -1,14 +1,78 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Login
+    {% include 'common/pre_loader.html.twig' %}<!-- Pre Loader -->
+    <!-- Body main wrapper start -->
+    <div class="wrapper fix">
+        <!-- Header 1
+        ============================================ -->
+        {% include 'common/header_1.html.twig' %}
+        {% include 'common/page_banner_area.html.twig' %}
+        <!-- Contatc Area
+        ============================================ -->
+        <div id="contact-area" class="contact-area bg-gray">
+            <div class="container pb-90 pt-90">
+                <!-- Section Title -->
+                <div class="row">
+                    <div class="section-title text-center col-12 mb-45">
+                        <h3 class="heading">touch in driveon</h3>
+                        <div class="excerpt">
+                            <p>Lorem ipsum dolor sit amet, consectetur maksu rez do eiusmod tempor magna aliqua</p>
+                        </div>
+                        <i class="icofont icofont-traffic-light"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Contact Info -->
+                    <div class="contact-info col-lg-4 col-sm-5 col-12">
+                        <div class="single-info text-left fix">
+                            <div class="icon"><i class="icofont icofont-phone"></i></div>
+                            <div class="content fix">
+                                <h5>call us</h5>
+                                <p>+ 1 432 789 5647 <br/>+ 1 432 789 5673</p>
+                            </div>
+                        </div>
+                        <div class="single-info text-left fix">
+                            <div class="icon"><i class="icofont icofont-envelope"></i></div>
+                            <div class="content fix">
+                                <h5>your message</h5>
+                                <p><a href="#">info@alfresco.com</a><a href="#">admin@alfresco.com</a></p>
+                            </div>
+                        </div>
+                        <div class="single-info text-left fix">
+                            <div class="icon"><i class="icofont icofont-location-pin"></i></div>
+                            <div class="content fix">
+                                <h5>our location</h5>
+                                <p>3756 Melrose place, <br/>CA 87031, Australia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Form -->
+                    <div class="contact-form form text-left col-lg-8 col-sm-7 col-12">
 
-    {{ form_start(form) }}
-      {{ form_label(form.email) }}
-      {{ form_row(form.email) }}
-
-      {{ form_label(form.password) }}
-      {{ form_row(form.password) }}
-    {{ form_end(form) }}
-
+                        {{ form_start(form, {'attr':{'id': 'contact-form'}}) }}
+                        <div class="input 2">
+                            {{ form_row(form.email) }}
+                        </div>
+                        <div class="input 2">
+                            {{ form_row(form.password) }}
+                        </div>
+                        <div class="input input-submit">
+                            {{ form_row(form.submit, {'attr':{'class': 'btn btn-lg hover-color'}}) }}
+                        </div>
+                        <!-- </form> -->
+                        {{ form_end(form) }}
+                        <p class="form-messege"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="contact-map"></div>
+        </div>
+        <!-- CTA Area
+        ============================================ -->
+        {% include 'common/cta_area.html.twig' %}
+        <!-- Footer Area
+        ============================================ -->
+        {% include 'common/footer.html.twig' %}
+    </div>
 {% endblock %}
