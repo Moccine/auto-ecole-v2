@@ -49,7 +49,6 @@
                     </div>
                     <!-- Contact Form -->
                     <div class="contact-form form text-left col-lg-8 col-sm-7 col-12">
-
                         {{ form_start(form, {'attr':{'id': 'contact-form'}}) }}
                         <div class="input 2">
                             {{ form_row(form.email) }}
@@ -58,11 +57,10 @@
                             {{ form_row(form.password) }}
                         </div>
                         <div class="input input-submit">
-                            {{ form_row(form.submit, {'attr':{'class': 'btn btn-lg hover-color'}}) }}
+                            {{ form_row(form.submit) }}
                         </div>
                         <!-- </form> -->
                         {{ form_end(form) }}
-                        <p class="form-messege"></p>
                     </div>
                 </div>
             </div>
