@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    Login Middle
+
+    {{ form_start(form) }}
+      {{ form_label(form.email) }}
+      {{ form_row(form.email) }}
+
+      {{ form_label(form.password) }}
+      {{ form_row(form.password) }}
+    {{ form_end(form) }}
+
+{% endblock %}

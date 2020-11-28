@@ -1,0 +1,59 @@
+app:
+  caterory:
+    code: 'Code'
+  command:
+    import:
+      catalog:
+        failed: 'Impossible d''importer le catalogue'
+        success: 'Catalogue importé avec succès'
+  form:
+    registration:
+        userName: 'Email'
+        plainPassword: 'Mot de passe'
+        secondPassword: 'Confirmation du mot de passe'
+        identicalPassword: 'Les mots de passes saisi ne sont pas identiques'
+        passwordNotIdentical: 'Mot de passe non identique'
+        lastName: 'Nom'
+        firstName: 'Prénom'
+        phone: 'Téléphone'
+        company: 'Raison sociale'
+        address: 'Addresse'
+        postalCode: 'Code postal'
+        city: 'Ville'
+        country: 'Pays'
+        siret: 'Siret'
+        submit: 'Valider'
+        confirm: 'Votre compte a bien été confirmé. Vous pouvez à présent vous identifier.'
+    reset:
+        username: 'Identifiant'
+        newPassword: 'Saisissez votre nouveau mot de passe'
+        confirmPassword: 'Confirmez votre nouveau mot de passe'
+        submit: 'Valider'
+        confirmUpdate: 'Votre mot de passe a bien été modifié'
+    edit:
+        oldPassword: 'Entrer votre mot de passe actuel'
+        plainPassword: 'Entrer un nouveau mot de passe'
+        secondPassword: 'Répété le nouveau mot de passe'
+    login:
+        userName: 'Email'
+        password: 'Mot de passe'
+        submit: 'Valider'
+    submission:
+        firstName: 'Nom'
+        lastName: 'Prénom'
+        email: 'Email'
+        message: 'Message'
+        save: 'Enregister'
+    incident:
+        lastName: 'Nom'
+        firstName: 'Prénom'
+        society: 'Société'
+        description: 'Description de l''incident'
+    cart:
+        delivery: 'Livraison'
+        location: 'Location'
+  flash:
+    updatePassword: 'Votre mot de passe a bien été mis à jour'
+    updatePasswordError: 'Une erreur s''est produite lors de la mise à jour de votre mot passe'
+    subscriptionNewsletter: 'Votre inscription à la newsletter a bien été prise en compte.'
+    closeIncident: 'L''incident a bien été cloturé'

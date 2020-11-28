@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div>
+    {% for message in app.flashes('success') %}
+      <div>
+        {{ message }}
+      </div>
+    {% endfor %}
+
+    {% for message in app.flashes('error') %}
+      <div>
+        {{ message }}
+      </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+      <h3>Réinitialiser votre mot de passe</h3>
+      <div>
+        <label>Email :</label>
+        {{ form_widget(form.email) }}
+      </div>
+      <div>
+        {{ form_widget(form.submit, { attr: { class: 'btn-primary'} }) }}
+      </div>
+    {{ form_end(form) }}
+  </div>
+{% endblock %}
