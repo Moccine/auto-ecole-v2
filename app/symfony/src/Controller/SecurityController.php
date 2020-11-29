@@ -31,17 +31,15 @@ class SecurityController extends AbstractController
      * @param UserManager $userManager
      * @return Response
      */
-    public function registration(
-        Request $request,
-        UserManager $userManager
-    ): Response {
+    public function registration( Request $request, UserManager $userManager): Response
+    {
         $user = new User();
-
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $userManager->create($user);
+
+            return $this->redirectToRoute('user_login');
         }
 
         return $this->render('security/registration.html.twig', [
@@ -56,11 +54,7 @@ class SecurityController extends AbstractController
      * @param UserManager $userManager
      * @return Response
      */
-    public function resetConfirm(
-        Token $token,
-        TokenService $tokenService,
-        UserManager $userManager
-    ): Response {
+    public function resetConfirm(Token $token, TokenService $tokenService, UserManager $userManager): Response {
         if (!$tokenService->isValid($token, Token::TTL_RESET)) {
             throw $this->createNotFoundException();
         }
@@ -81,8 +75,16 @@ class SecurityController extends AbstractController
             'email' => $authenticationUtils->getLastUsername(),
         ]);
 
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
         return $this->render('security/login.html.twig', [
             'form' => $form->createView(),
+            'last_username' => $lastUsername,
+            'error' => $error
+
         ]);
     }
 
@@ -94,12 +96,8 @@ class SecurityController extends AbstractController
      * @param TranslatorInterface $translator
      * @return Response
      */
-    public function request(
-        Request $request,
-        TokenManager $tokenManager,
-        UserRepository $userRepository,
-        TranslatorInterface $translator
-    ): Response {
+    public function request(Request $request, TokenManager $tokenManager, UserRepository $userRepository, TranslatorInterface $translator ): Response
+    {
         $userRequest = new UserRequestModel();
 
         $form = $this->createForm(RequestType::class, $userRequest);

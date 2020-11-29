@@ -16,7 +16,7 @@ class PasswordService implements PasswordInterface
         $this->userPasswordEncoder = $userPasswordEncoder;
     }
 
-    public function encode(UserInterface $user, string $password): string
+    public function encode(?UserInterface $user, string $password): string
     {
         return $this->userPasswordEncoder->encodePassword($user, $password);
     }

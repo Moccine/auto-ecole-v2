@@ -60,7 +60,7 @@
               {{ form_row(form.email) }}
             </div>
             <div class="input 2">
-              {{ form_errors(form.plainPassword) }}
+              {{ form_errors(form.plainPassword, {'attr':{'class':'error'}}) }}
               {{ form_widget(form.plainPassword) }}
             </div>
             <div class="input 2">

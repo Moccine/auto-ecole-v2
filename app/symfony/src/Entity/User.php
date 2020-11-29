@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Entity\Traits\IdentifiableTrait;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,54 +14,26 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- *  @UniqueEntity(fields={"email"})
+ * @UniqueEntity(fields={"email"})
  */
-class User
+class User implements UserInterface
 {
+    public const ROLE_USER = 'ROLE_USER';
 
     use IdentifiableTrait;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $firstName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $lastName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(length=180, unique=true)
      */
     private string $email;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $mobile;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private ?string $jobTitle;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private ?string $username;
-
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
     /**
      * @ORM\Column(type="string")
      */
     private string $password;
 
     /**
-     * @Assert\NotBlank ()
+     * @Assert\NotBlank()
      * @Assert\Regex(
      *     pattern="/(?=(.*[0-9]))(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/",
      *     message="validator.user.password",
@@ -72,26 +47,17 @@ class User
      */
     private ?Client $client;
 
-    public function setFirstName(string $firstName): self
-    {
-        $this->firstName = $firstName;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $enabled = false;
 
-        return $this;
-    }
+    /**
+     * @ORM\OneToMany(targetEntity=Incident::class, mappedBy="user", cascade={"persist"})
+     */
+    private Collection $incidents;
 
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(string $lastName): self
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -99,37 +65,6 @@ class User
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getMobile(): ?string
-    {
-        return $this->mobile;
-    }
-
-    public function setMobile(string $mobile): self
-    {
-        $this->mobile = $mobile;
-
-        return $this;
-    }
-
-    public function getJobTitle(): ?string
-    {
-        return $this->jobTitle;
-    }
-
-    public function setJobTitle(string $jobTitle): self
-    {
-        $this->jobTitle = $jobTitle;
-
-        return $this;
-    }
-
-    public function setUsername(string $userName): self
-    {
-        $this->username = $userName;
 
         return $this;
     }
@@ -193,6 +128,7 @@ class User
 
         return $this;
     }
+
     public function getClient(): ?Client
     {
         return $this->client;
@@ -205,4 +141,29 @@ class User
         return $this;
     }
 
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): void
+    {
+        $this->enabled = $enabled;
+    }
+
+    public function getIncidents(): ?Collection
+    {
+        return $this->incidents;
+    }
+
+    public function addIncident(Incident $incident): self
+    {
+        if ($this->incidents->contains($incident)) {
+            return $this;
+        }
+
+        $this->incidents->add($incident);
+
+        return $this;
+    }
 }

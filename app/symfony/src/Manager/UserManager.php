@@ -64,6 +64,7 @@ class UserManager
         try{
             $this->encodePassword($user, $user->getPlainPassword());
             $this->em->persist($user);
+            dump($user);
             $this->em->flush();
             $this->tokenManager->create(Token::TYPE_CONFIRM, $user);
 
@@ -80,6 +81,7 @@ class UserManager
     private function encodePassword(User $user, string $password): void
     {
         $user->setPassword($this->passwordService->encode($user, trim($password)));
+
     }
 
     public function resetPassword(User $user, string $password, Token $token): void

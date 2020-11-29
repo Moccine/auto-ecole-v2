@@ -16,15 +16,20 @@ class LoginType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'app.form.login.userName',
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'app.form.login.userName',
+                ]
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'app.form.login.password',
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'app.form.login.password',
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'app.form.login.submit',
-            ])
-        ;
+            ]);
     }
 
     public function getBlockPrefix(): ?string
