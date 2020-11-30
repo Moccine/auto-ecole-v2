@@ -53,18 +53,6 @@ class ClientType extends AbstractType
                     'placeholder' => 'app.form.registration.company'
                 ]
             ])
-            ->add('siret', null, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'app.form.registration.siret'
-                ]
-            ])
-            ->add('type', ChoiceType::class, [
-                'label' => false,
-                'choices' => Client::$types,
-                'expanded' => true,
-                'multiple' => false,
-            ])
             ->add('address', AddressType::class)
            ;
 

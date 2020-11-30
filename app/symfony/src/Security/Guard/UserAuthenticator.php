@@ -18,10 +18,9 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
-use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class UserAuthenticator extends AbstractFormLoginAuthenticator
+class UserAuthenticator extends AbstractGuardAuthenticator
 {
     private PasswordService $passwordService;
 
@@ -64,7 +63,10 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
         return true;
     }
 
-
+    public function start(Request $request, AuthenticationException $exception = null): RedirectResponse
+    {
+        return new RedirectResponse($this->urlGenerator->generate('homepage'));
+    }
 
     public function getCredentials(Request $request): array
     {
@@ -116,10 +118,5 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
     public function supportsRememberMe(): bool
     {
         return false;
-    }
-
-    protected function getLoginUrl()
-    {
-        return $this->urlGenerator->generate('user_login');
     }
 }

@@ -79,6 +79,8 @@ class Client
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->type = self::TYPE_INDIVIDUAL;
+        $this->siret = null;
     }
 
     public function getAddress(): Address

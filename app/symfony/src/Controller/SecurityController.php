@@ -14,8 +14,10 @@ use App\Manager\TokenManager;
 use App\Manager\UserManager;
 use App\Model\UserRequestModel;
 use App\Model\UserResetModel;
+use App\Repository\TokenRepository;
 use App\Repository\UserRepository;
 use App\Service\Security\TokenService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,15 +33,18 @@ class SecurityController extends AbstractController
      * @param UserManager $userManager
      * @return Response
      */
-    public function registration( Request $request, UserManager $userManager): Response
-    {
+    public function registration(
+        Request $request,
+        UserManager $userManager
+    ): Response {
         $user = new User();
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $userManager->create($user);
-
-            return $this->redirectToRoute('user_login');
+         //   return $this->redirectToRoute('user_login');
         }
 
         return $this->render('security/registration.html.twig', [
@@ -49,12 +54,25 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/registration/confirm/{value}", name="registration_confirm", methods={"GET","POST"})
-     * @param Token $token
+     * @param Request $request
      * @param TokenService $tokenService
      * @param UserManager $userManager
+     * @param TokenRepository $repository
      * @return Response
      */
-    public function resetConfirm(Token $token, TokenService $tokenService, UserManager $userManager): Response {
+    public function resetConfirm(
+        Request $request,
+        TokenService $tokenService,
+        UserManager $userManager,
+    TokenRepository $repository
+    ): Response {
+
+        $token = $repository->findOneBy([
+            'value' =>  $request->attributes->get('value')
+        ]);
+        if (!$token instanceof Token) {
+            throw $this->createNotFoundException();
+        }
         if (!$tokenService->isValid($token, Token::TTL_RESET)) {
             throw $this->createNotFoundException();
         }
@@ -75,16 +93,8 @@ class SecurityController extends AbstractController
             'email' => $authenticationUtils->getLastUsername(),
         ]);
 
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-
         return $this->render('security/login.html.twig', [
             'form' => $form->createView(),
-            'last_username' => $lastUsername,
-            'error' => $error
-
         ]);
     }
 
@@ -96,8 +106,12 @@ class SecurityController extends AbstractController
      * @param TranslatorInterface $translator
      * @return Response
      */
-    public function request(Request $request, TokenManager $tokenManager, UserRepository $userRepository, TranslatorInterface $translator ): Response
-    {
+    public function request(
+        Request $request,
+        TokenManager $tokenManager,
+        UserRepository $userRepository,
+        TranslatorInterface $translator
+    ): Response {
         $userRequest = new UserRequestModel();
 
         $form = $this->createForm(RequestType::class, $userRequest);

@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\IdentifiableTrait;
-use App\Entity\Traits\TimestampableTrait;
 use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
@@ -27,9 +27,10 @@ class Order
     public const REFERENCE_LENGTH = 8;
 
     use IdentifiableTrait;
-use TimestampableTrait;
+
     /**
      * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="order", cascade={"persist"})
+     * @Assert\Valid()
      */
     private Collection $purchases;
 
@@ -191,7 +192,7 @@ use TimestampableTrait;
     {
         if (!$this->vouchers->contains($voucher)) {
             $this->vouchers[] = $voucher;
-            $voucher->setBorder($this);
+            $voucher->setOrder($this);
         }
 
         return $this;
@@ -201,8 +202,8 @@ use TimestampableTrait;
     {
         if ($this->vouchers->removeElement($voucher)) {
             // set the owning side to null (unless already changed)
-            if ($voucher->getBorder() === $this) {
-                $voucher->setBorder(null);
+            if ($voucher->getOrder() === $this) {
+                $voucher->setOrder(null);
             }
         }
 

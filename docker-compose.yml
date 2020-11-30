@@ -34,6 +34,9 @@ services:
   # Mailhog
   mailhog:
     image: mailhog/mailhog:latest
+    ports:
+      - 1025:1025
+      - 1080:1080
 
 volumes:
   app-vendor:

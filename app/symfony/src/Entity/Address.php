@@ -57,6 +57,14 @@ class Address
      */
     private ?float $longitude;
 
+    /**
+     * Address constructor.
+     */
+    public function __construct()
+    {
+        $this->country = self::FRANCE;
+    }
+
     public function getAddress(): ?string
     {
         return $this->address;

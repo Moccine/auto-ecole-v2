@@ -9,25 +9,29 @@
             <div class="row justify-content-between">
                 <div class="navbar-header col-auto">
                     <a href="{{ path('home') }}" class="logo navbar-brand">
-                        <img id="logo_img" src="img/logo/color-1.png" alt="logo" /></a>
+                        <img id="logo_img" src="img/logo/color-1.png" alt="logo"/></a>
                 </div>
                 <div class="main-menu mean-menu col-auto">
                     <nav>
                         <ul>
                             <li><a href="{{ path('home') }}">Accueil</a></li>
                             <li><a href="about.html">A propos</a></li>
-                            <li><a href="#">Code<i class="icofont icofont-simple-down"></i></a></li>
-                            <li><a href="#">Permis<i class="icofont icofont-simple-down"></i></a></li>
-                            <li><a href="#">financement<i class="icofont icofont-simple-down"></i></a></li>
-                            <li><a href="#">tarifs<i class="icofont icofont-simple-down"></i></a></li>
-                            <li><a href="#">connexion<i class="icofont icofont-simple-down"></i></a>
-                            <ul>
-                                <li><a href="{{path('user_login') }}">login</a></li>
-                                <li><a href="{{path('registration') }}">inscription</a></li>
-                                <li><a href="{{path('logout') }}">deconnexion</a></li>
-                            </ul>
+                            <li><a href="#">Code</a></li>
+                            <li><a href="#">Permis</a></li>
+                            <li><a href="#">financement</a></li>
+                            <li><a href="#">tarifs</a></li>
+                            <li><a href="#">contact</a></li>
+                            {% if app.user %}
+                                <li><a href="{{ path('logout') }}">deconnexion</a></li>
+                                {% else %}
+                            <li><a href="#">Connexion</a>
+                                <ul>
+                                    <li><a href="{{ path('user_login') }}">login</a></li>
+                                    <li><a href="{{ path('registration') }}">inscription</a></li>
+                                </ul>
+                                {% endif %}
+
                             </li>
-                            <li ><a href="#">contact</a></li>
                         </ul>
                     </nav>
                 </div>
