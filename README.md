@@ -1,4 +1,4 @@
-# Muzeo
+# Symfony projet
 
 The project is a Symfony 5.2 based application which is developped in a docker environment.
 
